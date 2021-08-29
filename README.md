@@ -30,6 +30,48 @@
   - `lerna add <package-name> --scope=<local-package-name>` : `packages` 하위의 `local-package-name` 패키지에 `package-name`을 설치합니다.
   - `lerna publish` : 마지막 변경점에서 변경된 사항이 있는 모든 지역 패키지를 배포합니다.
 
+## lerna
+- [@lerna/version 문서](https://github.com/lerna/lerna/tree/main/commands/version#readme)
+- `yarn lerna:version`을 실행하면 전 버전과 차이(diff)가 있는 경우 버전 태깅을 진행합니다.
+  - 만약 remote repository가 없다면 versioning을 진행하지 않습니다.
+  ```shell
+  ➜  monorepo git:(main) yarn lerna:version
+  yarn run v1.22.10
+  $ lerna version
+  lerna notice cli v4.0.0
+  lerna info versioning independent
+  lerna info Assuming all packages changed
+  ? Select a new version for admin (currently 0.1.0) Patch (0.1.1)
+  ? Select a new version for client (currently 1.0.0) Patch (1.0.1)
+  ? Select a new version for @service/components (currently 1.0.0) Patch (1.0.1)
+  ? Select a new version for @service/eslint-config-study (currently 1.0.0) Patch (1.0.1)
+  ? Select a new version for @service/prettier-config (currently 1.0.0) Patch (1.0.1)
+  ? Select a new version for @service/utils (currently 1.0.0) Patch (1.0.1)
+
+  Changes:
+  - admin: 0.1.0 => 0.1.1 (private)
+  - client: 1.0.0 => 1.0.1 (private)
+  - @service/components: 1.0.0 => 1.0.1
+  - @service/eslint-config-study: 1.0.0 => 1.0.1
+  - @service/prettier-config: 1.0.0 => 1.0.1
+  - @service/utils: 1.0.0 => 1.0.1
+
+  ? Are you sure you want to create these versions? Yes
+  lerna info execute Skipping releases
+  lerna info git Pushing tags...
+  lerna success version finished
+  ✨  Done in 57.01s.
+  ```
+  ```shell
+  ➜  monorepo git:(main) git tags --list
+  @service/components@1.0.1
+  @service/eslint-config-study@1.0.1
+  @service/prettier-config@1.0.1
+  @service/utils@1.0.1
+  admin@0.1.1
+  client@1.0.1
+  ```
+
 ## [참고]
 - [Lerna와 Yarn workspaces를 활용한 패키지 관리](https://medium.com/wantedjobs/lerna%EC%99%80-yarn-workspaces%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%ED%8C%A8%ED%82%A4%EC%A7%80-%EA%B4%80%EB%A6%AC-429d2a685486)
 - [Lerna와 yarn-workspace를 활용한 Mono Repo (Typescript & Jest) 환경 구성하기](https://jojoldu.tistory.com/585)
