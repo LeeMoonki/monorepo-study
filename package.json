@@ -1,0 +1,39 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "dev:client": "yarn workspace client dev",
+    "dev:admin": "yarn workspace admin start",
+    "test": "yarn test-ci:client && yarn test-ci:admin && yarn test-ci:components",
+    "test-ci:client": "yarn workspace client test:ci",
+    "test-ci:admin": "yarn workspace admin test:no-watch",
+    "test-ci:components": "yarn workspace @service/components test:ci",
+    "test:client": "yarn workspace client test",
+    "test:admin": "yarn workspace admin test",
+    "test:components": "yarn workspace @service/components test",
+    "prepare:util": "yarn workspace @service/utils compile",
+    "prepare:components": "yarn workspace @service/components compile",
+    "prepare": "yarn prepare:util && yarn prepare:components && husky install"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.1",
+    "lerna": "^4.0.0",
+    "lint-staged": "^11.1.2",
+    "prettier": "2.3.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": ["eslint", "prettier --write"]
+  }
+}
