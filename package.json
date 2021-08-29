@@ -13,7 +13,10 @@
     "test:components": "yarn workspace @service/components test",
     "prepare:util": "yarn workspace @service/utils compile",
     "prepare:components": "yarn workspace @service/components compile",
-    "prepare": "yarn prepare:util && yarn prepare:components && husky install"
+    "prepare:pkg": "yarn prepare:util && yarn prepare:components",
+    "prepare": "husky install",
+    "lerna:diff": "lerna diff",
+    "lerna:version": "lerna version"
   },
   "workspaces": [
     "packages/*"
