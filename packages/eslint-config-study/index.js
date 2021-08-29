@@ -28,5 +28,6 @@ module.exports = {
     // import/extensions와 import/no-unresolved는 .tsx 파일을 확장자 없이 import 하려고 할 때 에러를 발생시킵니다.
     'import/extensions': ['error', 'never'],
     'import/no-unresolved': 'off',
+    'import/prefer-default-export': 'off',
   }
 };
